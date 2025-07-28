@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-// Assuming socket.js is configured correctly in your project
+// Make sure your socket.js file is also pointing to your new Render URL!
 import { socket } from "./socket";
-import "./App.css"; // Import your CSS for styles
+import "./App.css";
 
 // --- ICONS (Self-contained SVGs for a clean look) ---
 const SendIcon = () => (
@@ -242,7 +242,8 @@ export default function App() {
       setIsNameSet(true);
     }
 
-    fetch("http://localhost:5000/threads")
+    // UPDATED: Fetch threads from your live Render backend
+    fetch("https://threadify-1.onrender.com/threads")
       .then((res) => res.json())
       .then(setThreads)
       .catch((err) => console.error("Failed to fetch threads:", err));
@@ -280,7 +281,8 @@ export default function App() {
     const imageUrl = imagePreview;
 
     try {
-      await fetch("http://localhost:5000/threads", {
+      // UPDATED: Post new threads to your live Render backend
+      await fetch("https://threadify-1.onrender.com/threads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         // Add userName to the request body

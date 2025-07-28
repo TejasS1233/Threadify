@@ -1,2 +1,4 @@
 import { io } from "socket.io-client";
-export const socket = io("http://localhost:5000");
+
+// Connect to your live Render server
+export const socket = io("https://threadify-1.onrender.com");
